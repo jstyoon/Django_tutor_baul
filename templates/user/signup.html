@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+회원가입
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="wrap">
+        <h2 class="title-center"> 회원가입 </h2>
+        <form class="form-area" method="post" action="/sign-up/"> <!--회원가입 기능-->
+            {% csrf_token %} <!--장고에서 데이터를 post 방식으로 보낼 때 보안을 지켜주기 위한 기능-->
+            <div class="form-group mt-2 mb-2">
+                <label for="username">이름</label>
+                <input type="text" class="form-control" id="username" name="username"> <!-- 정보1 -->
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" id="password" name="password"> <!-- 정보2 -->
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="password2">비밀번호 확인</label>
+                <input type="password" class="form-control" id="password2" name="password2"> <!-- 정보3 -->
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="bio">나를 한마디로</label>
+                <input type="text" class="form-control" id="bio" name="bio"> <!-- 정보4 -->
+            </div>
+            <hr>
+            <div style="float: right">
+                <button type="submit" class="btn btn-primary">회원가입</button>
+                <a href="/sign-in" class="btn btn-secondary">로그인 페이지로</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
