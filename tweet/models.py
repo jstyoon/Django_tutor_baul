@@ -18,6 +18,7 @@ class TweetModel(models.Model):
 class TweetComment(models.Model):
     class Meta:
         db_table = "comment"
+        
     tweet = models.ForeignKey(TweetModel, on_delete=models.CASCADE)
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=256)

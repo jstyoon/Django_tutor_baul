@@ -37,14 +37,14 @@ def delete_tweet(request, id):
     return redirect('/tweet')
 
 
-@login_required
+@login_required # 상세보기 
 def detail_tweet(request, id):
     my_tweet = TweetModel.objects.get(id=id)
     tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
     return render(request,'tweet/tweet_detail.html',{'tweet':my_tweet,'comment':tweet_comment})
 
 
-@login_required
+@login_required # 댓글달기
 def write_comment(request, id):
     if request.method == 'POST':
         comment = request.POST.get("comment","")
@@ -58,7 +58,7 @@ def write_comment(request, id):
         
         return redirect('/tweet/'+str(id))
     
-@login_required
+@login_required # 댓글삭제
 def delete_comment(request, id):
     comment = TweetComment.objects.get(id=id)
     current_tweet = comment.tweet.id
