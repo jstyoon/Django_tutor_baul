@@ -1,14 +1,14 @@
-# w4 Django_tutor_baul
-
-## 구현 기능
-
+# Django_tutor_baul w4
 ---
+> - 주의)코드가 바뀌면서 데이터 모델이 바뀌게 되면 DB를 삭제하고
+> - 주의) migrations의 init을 제외한 파일을 삭제하고 다시 migrations, migrate, createsuperuser
+---
+### 구현 기능
 > - 데이터베이스 테이블 간의 관계 파악
 > - 관계 만들기 연습(Django Shell을 활용해 Many-To-Many 모델 확인)
 > - admin을 활용한 ORM 모델 수정
 > - 팔로잉 / 팔로우 기능 만들기(django Template 문법을 활용해 팔로우 모델 표시)
 ---
-
 ![image](https://user-images.githubusercontent.com/103176409/233288276-ac4f61d3-3214-486a-9da5-7835a34057ca.png)
 ![image](https://user-images.githubusercontent.com/103176409/233288325-f7844cde-12ce-46be-8c71-28ac5d1656e6.png)
 ![image](https://user-images.githubusercontent.com/103176409/233288361-ce9ce902-149b-4b7a-a2f7-10b89343972b.png)
