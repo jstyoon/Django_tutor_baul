@@ -15,18 +15,20 @@ def tweet(request):
     if request.method == 'GET':
         user = request.user.is_authenticated
         if user:
-            all_tweet = TweetModel.objects.all().order_by('-created_at') #역순 정렬
-            return render(request, 'tweet/home.html', {'tweet': all_tweet}) #딕셔너리 키값 tweet
+            all_tweet = TweetModel.objects.all().order_by('-created_at')
+            return render(request, 'tweet/home.html', {'tweet': all_tweet})
         else:
             return redirect('/sign-in')
         
     elif request.method == 'POST':
-        # 장고에서는 요청에 자동적으로 인증을 추가합니다. 아래처럼 작성하면 현재 요청이 누구에게서 요청 된 것인지 확인 할 수 있습니다.
-        user = request.user # 로그인 한 user 전체 불러오기
-        my_tweet = TweetModel() # 글쓰기 모델 가져오기
-        my_tweet.author = user  # 모델에 사용자 저장
-        # html에서 id와 name이 'my-content'입니다. 아래처럼 작성하면 POST 형식으로 요청 한 데이터를 id와 name을 가지고 올 수 있습니다.
-        my_tweet.content = request.POST.get('my-content', '')
+        user = request.user
+        content = request.POST.get('my-content', '')
+        
+        if content == '':
+            all_tweet = TweetModel.objects.all().order_by('-created_at')
+            return render(request, 'tweet/home.html',{'error':'글은 공백일 수 없습니다', 'tweet':all_tweet})
+    else:
+        my_tweet = TweetModel.objects.create(author=user, content=content)
         my_tweet.save()
         return redirect('/tweet')
         
